@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Lead Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div><p class="eyebrow">LEAD OPERATIONS</p><h1>AI Lead Management</h1>
+      <p class="muted">A simple view of incoming leads and AI qualification.</p></div>
+      <a class="button secondary" href="/api/reports/leads.csv">Export CSV</a>
+    </header>
+    <section class="stats">
+      <article class="stat"><span>Total leads</span><strong id="total">0</strong></article>
+      <article class="stat"><span>Hot</span><strong id="hot">0</strong></article>
+      <article class="stat"><span>Warm</span><strong id="warm">0</strong></article>
+      <article class="stat"><span>Cold</span><strong id="cold">0</strong></article>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>Leads</h2><button id="refresh" class="button">Refresh</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Lead</th><th>Company</th><th>Requirement</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="leadRows"><tr><td colspan="6">Loading leads…</td></tr></tbody>
+      </table></div>
+    </section>
+    <p class="footer">Local development dashboard · Flask + SQLite + Ollama</p>
+  </main>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

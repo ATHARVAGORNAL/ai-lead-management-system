@@ -1,0 +1,16 @@
+:root{font-family:Inter,Segoe UI,Arial,sans-serif;color:#e8edf5;background:#101722}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1180px;margin:48px auto;padding:0 22px}
+header,.panel-head{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.eyebrow{font-size:11px;letter-spacing:2px;color:#7e9dbb;font-weight:700}
+h1{font-size:32px;margin:8px 0}h2{font-size:18px}.muted,.footer{color:#91a0b3}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.stat,.panel{background:#182332;border:1px solid #29394d;border-radius:12px;padding:20px}
+.stat span{display:block;color:#9cabbc;font-size:13px}.stat strong{display:block;font-size:28px;margin-top:10px}
+.button{border:0;border-radius:8px;background:#3979d6;color:white;padding:10px 14px;text-decoration:none;cursor:pointer;font-weight:600}
+.secondary{background:#27384d}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{text-align:left;padding:14px 12px;border-top:1px solid #2b3b4e;font-size:13px;vertical-align:top}
+th{color:#91a5bc;font-weight:600}.pill{display:inline-block;padding:5px 9px;border-radius:20px;background:#26394d;font-size:11px}
+.pill.Hot{background:#5c2932;color:#ffb6bf}.pill.Warm{background:#5b4826;color:#f6d28a}.pill.Cold{background:#234b48;color:#a2e4d7}
+select{background:#111b28;color:#e8edf5;border:1px solid #40536a;border-radius:6px;padding:7px}
+.footer{font-size:12px;margin-top:22px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start;flex-direction:column}}
