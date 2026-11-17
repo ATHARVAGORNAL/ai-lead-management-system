@@ -1,0 +1,62 @@
+$ curl -s -X POST http://127.0.0.1:7000/api/agent/tools/update-lead-status -H 'Content-Type: application/json' -d '{"lead_id":1,"status":"Contacted"}'
+
+{
+  "lead": {
+    "analysis_status": "completed",
+    "business_intent": "Request for pricing/demo",
+    "company": "ABC Technologies",
+    "created_at": "2026-11-17 03:45:14",
+    "email": "rahul@example.com",
+    "id": 1,
+    "message": "We need an AI chatbot for customer support. Please share details and pricing.",
+    "name": "Rahul Sharma",
+    "phone": "9876543210",
+    "requirements": "AI chatbot for customer support",
+    "status": "Contacted",
+    "suggested_response": "Hi Rahul, thanks for considering ABC Technologies for your customer support needs! I'd be happy to provide you with more information about our AI chatbot solutions. Can you please tell me a little more about your current support processes and what you hope to achieve with a new chatbot?",
+    "temperature": "Hot"
+  },
+  "success": true
+}
+
+HTTP_STATUS:200
+
+VERIFY via lookup_lead:
+{
+  "found": true,
+  "lead": {
+    "analysis_status": "completed",
+    "business_intent": "Request for pricing/demo",
+    "company": "ABC Technologies",
+    "created_at": "2026-11-17 03:45:14",
+    "email": "rahul@example.com",
+    "id": 1,
+    "message": "We need an AI chatbot for customer support. Please share details and pricing.",
+    "name": "Rahul Sharma",
+    "phone": "9876543210",
+    "requirements": "AI chatbot for customer support",
+    "status": "Contacted",
+    "suggested_response": "Hi Rahul, thanks for considering ABC Technologies for your customer support needs! I'd be happy to provide you with more information about our AI chatbot solutions. Can you please tell me a little more about your current support processes and what you hope to achieve with a new chatbot?",
+    "temperature": "Hot"
+  }
+}
+
+VERIFY via GET /api/leads/1:
+{
+  "lead": {
+    "analysis_status": "completed",
+    "business_intent": "Request for pricing/demo",
+    "company": "ABC Technologies",
+    "created_at": "2026-11-17 03:45:14",
+    "email": "rahul@example.com",
+    "id": 1,
+    "message": "We need an AI chatbot for customer support. Please share details and pricing.",
+    "name": "Rahul Sharma",
+    "phone": "9876543210",
+    "requirements": "AI chatbot for customer support",
+    "status": "Contacted",
+    "suggested_response": "Hi Rahul, thanks for considering ABC Technologies for your customer support needs! I'd be happy to provide you with more information about our AI chatbot solutions. Can you please tell me a little more about your current support processes and what you hope to achieve with a new chatbot?",
+    "temperature": "Hot"
+  },
+  "status": "success"
+}

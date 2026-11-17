@@ -1,0 +1,10 @@
+{
+  "analysis": {
+    "business_intent": "Urgent purchase intent, requesting pricing and demo",
+    "requirements": "AI chatbot for customer support",
+    "suggested_response": "Hi Evidence Lead, thank you for reaching out. We understand that Evidence Corp urgently needs an AI chatbot for customer support. We would be happy to share our pricing details and set up a demo for your team. Could you please let us know your availability for a brief call this week so we can address your needs promptly?",
+    "temperature": "Hot"
+  },
+  "lead_id": 6,
+  "status": "success"
+}

@@ -1,0 +1,32 @@
+[PASS] 1. POST /api/leads (create) :: status=201 id=8
+[PASS] 2. GET /api/leads (list) :: status=200 total=4
+[PASS] 3. GET /api/leads/<id> :: status=200
+[PASS] 3b. GET /api/leads/<id> 404 :: ok
+[PASS] 4. POST /api/leads/<id>/analyze :: status=200 temp=Hot fields_ok=True err=None
+[PASS] 5. SQLite persistence :: db temp=Hot status=completed
+[PASS] 6. PATCH status :: status=200
+[PASS] 6b. PATCH invalid status -> 400 :: ok
+[PASS] 6c. PATCH status 404 :: ok
+[PASS] 7. Duplicate email -> 409 :: status=409
+[PASS] 8a. Missing fields -> 400 + fields[] :: status=400 fields=['phone', 'company', 'message']
+[PASS] 8b. Invalid email -> 400 :: ok
+[PASS] 8c. Short phone -> 400 :: ok
+[PASS] 8d. Non-JSON -> 400 :: ok
+[PASS] 9a. CSV export :: status=200 rows=4
+[PASS] 9b. GET /api/stats :: status=200 stats={"status": {"Contacted": 2, "New": 2}, "temperature": {"Cold": 1, "Hot": 2, "Warm": 1}, "total": 4}
+[PASS] 10a. lookup-lead by email -> 200 :: ok
+[PASS] 10b. lookup-lead by lead_id -> 200 :: ok
+[PASS] 10c. lookup-lead not found -> 404 :: ok
+[PASS] 10d. lookup-lead no params -> 400 (Finding B) :: status=400 body={'message': 'Provide email or lead_id', 'status': 'error'}
+[PASS] 10e. lookup-lead absent lead_id -> 404 preserved :: ok
+[PASS] 10f. lookup-lead valid -> 200 preserved :: ok
+[PASS] 10g. update-lead-status valid -> 200 :: status=200
+[PASS] 10h. update-lead-status invalid -> 400 :: ok
+[PASS] 10i. update-lead-status non-int -> 400 :: ok
+[PASS] 10j. update-lead-status missing -> 404 :: ok
+[PASS] X1. /api/health :: ok
+[PASS] X2. /api/unknown -> 404 :: ok
+[CLEANUP] deleted self-created test lead id=8
+
+=== SUMMARY ===
+Total: 28  PASS: 28  FAIL: 0
