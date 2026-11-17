@@ -89,6 +89,7 @@ ai-lead-management-system/
 ├── database.py                     # SQLite connection + schema initialization
 ├── agent_tools.py                  # Restricted Hermes tool wrappers
 ├── services/
+│   ├── __init__.py
 │   ├── lead_service.py             # Lead CRUD, validation, stats
 │   ├── ollama_service.py           # Ollama lead-qualification client
 │   └── reporting_service.py        # CSV serialization
@@ -107,13 +108,22 @@ ai-lead-management-system/
 │   ├── EVIDENCE.md
 │   ├── GAMMA_REPORT.md
 │   ├── DEMO_SCRIPT.md
-│   └── screenshots/                # Captured evidence
+│   └── screenshots/               # Captured evidence (dashboard, leads, Ollama,
+│                                   #   Hermes lookup/update, API verification)
 ├── .env.example                    # Safe configuration template (placeholders only)
 ├── .env                            # Real config (gitignored, never committed)
 ├── .gitignore
 ├── requirements.txt
+├── PROJECT_ANALYSIS.md             # Detailed system analysis and design notes
 └── README.md
 ```
+
+> **Repository note:** A temporary video-generation attempt produced demo HTML
+> slides (`static/demo/`) and recording artifacts (`submission/video_assets/` —
+> WebM segments, a Chromium profile cache, and recording scripts). Those have been
+> removed; only the application, the n8n/Hermes integrations, and the assignment
+> deliverables under `submission/` (reports + screenshots) are kept. No application
+> code, configuration, or lead records were affected.
 
 ## 6. Installation prerequisites
 
@@ -569,4 +579,5 @@ Captured evidence is in `submission/screenshots/` and described in
 
 Remote: `https://github.com/ATHARVAGORNAL/ai-lead-management-system.git`, branch `main`.
 
-Database files, virtual environments, `.env`, and cache files are excluded via `.gitignore`.
+Database files (`database/*.db` and sidecar files), virtual environments, `.env`, and
+Python bytecode caches are excluded via `.gitignore`.
