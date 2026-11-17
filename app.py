@@ -19,22 +19,61 @@ def dashboard():
 def health():
     return jsonify({"status": "success", "message": "AI Lead Management API is running"})
 
+
 @app.post("/api/leads")
 def api_create_lead():
     data = request.get_json(silent=True)
+
     if not isinstance(data, dict):
-        return jsonify({"status": "error", "message": "Request body must be valid JSON"}), 400
+        return jsonify({
+            "status": "error",
+            "message": "Request body must be valid JSON"
+        }), 400
+
+    # Normalize incoming values
     required = ["name", "email", "phone", "company", "message"]
-    missing = [key for key in required if not isinstance(data.get(key), str) or not data[key].strip()]
+
+    for key in required:
+        value = data.get(key)
+
+        if value is None:
+            data[key] = ""
+        else:
+            data[key] = str(value).strip()
+
+    # Validate required fields
+    missing = [
+        key for key in required
+        if not data[key]
+    ]
+
     if missing:
-        return jsonify({"status": "error", "message": "Missing or empty required fields", "fields": missing}), 400
+        return jsonify({
+            "status": "error",
+            "message": "Missing or empty required fields",
+            "fields": missing
+        }), 400
+
     try:
         lead = create_lead(data)
-        return jsonify({"status": "success", "message": "Lead created", "lead": lead}), 201
+
+        return jsonify({
+            "status": "success",
+            "message": "Lead created",
+            "lead": lead
+        }), 201
+
     except ValueError as exc:
-        return jsonify({"status": "error", "message": str(exc)}), 400
+        return jsonify({
+            "status": "error",
+            "message": str(exc)
+        }), 400
+
     except sqlite3.IntegrityError:
-        return jsonify({"status": "error", "message": "A lead with this email already exists"}), 409
+        return jsonify({
+            "status": "error",
+            "message": "A lead with this email already exists"
+        }), 409
 
 @app.get("/api/leads")
 def api_get_leads():
