@@ -34,7 +34,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:5000/api/leads",
+        "url": "http://127.0.0.1:7000/api/leads",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ { name: $json['Name'], email: $json['Email'], phone: $json['Phone Number'], company: $json['Company'], message: $json['Requirement'] } }}",
@@ -52,7 +52,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=http://127.0.0.1:5000/api/leads/{{$json.lead.id}}/analyze",
+        "url": "=http://127.0.0.1:7000/api/leads/{{$json.lead.id}}/analyze",
         "options": {}
       },
       "id": "3",

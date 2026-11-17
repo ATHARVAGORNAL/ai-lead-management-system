@@ -1,3 +1,7 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from flask import Flask, request, jsonify, render_template, Response
 from database import initialize_database, get_connection
 from services.ollama_service import analyze_lead, OllamaError
@@ -18,6 +22,7 @@ def dashboard():
 @app.get("/api/health")
 def health():
     return jsonify({"status": "success", "message": "AI Lead Management API is running"})
+
 
 
 @app.post("/api/leads")
@@ -74,6 +79,7 @@ def api_create_lead():
             "status": "error",
             "message": "A lead with this email already exists"
         }), 409
+
 
 @app.get("/api/leads")
 def api_get_leads():
@@ -138,6 +144,8 @@ def api_export_csv():
 def agent_lookup_lead():
     email = request.args.get("email")
     lead_id = request.args.get("lead_id", type=int)
+    if email is None and lead_id is None:
+        return jsonify({"status": "error", "message": "Provide email or lead_id"}), 400
     result = lookup_lead_tool(email=email, lead_id=lead_id)
     return jsonify(result), (200 if result.get("found") else 404)
 

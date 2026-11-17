@@ -4,7 +4,7 @@ This project exposes two restricted tools over HTTP. Configure your Hermes insta
 
 ## Tool 1: lookup_lead
 - Method: GET
-- URL: `http://127.0.0.1:5000/api/agent/tools/lookup-lead`
+- URL: `http://127.0.0.1:7000/api/agent/tools/lookup-lead`
 - Query: `email` OR `lead_id`
 - Purpose: retrieve one lead record.
 
@@ -14,7 +14,7 @@ Examples:
 
 ## Tool 2: update_lead_status
 - Method: POST
-- URL: `http://127.0.0.1:5000/api/agent/tools/update-lead-status`
+- URL: `http://127.0.0.1:7000/api/agent/tools/update-lead-status`
 - JSON body: `{"lead_id": 1, "status": "Contacted"}`
 - Allowed statuses: `New`, `Contacted`, `Converted`, `Rejected`
 

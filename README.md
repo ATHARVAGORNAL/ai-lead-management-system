@@ -28,7 +28,7 @@ ollama pull llama3.2:3b
 python app.py
 ```
 
-Open `http://127.0.0.1:5000`.
+Open `http://127.0.0.1:7000`.
 
 If PowerShell blocks activation, run the commands from Command Prompt instead:
 ```bat
@@ -53,14 +53,14 @@ venv\\Scripts\\activate
 ## Create a lead (PowerShell)
 
 ```powershell
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:5000/api/leads `
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:7000/api/leads `
   -ContentType "application/json" `
   -Body '{"name":"Rahul Sharma","email":"rahul@example.com","phone":"9876543210","company":"ABC Technologies","message":"We need an AI chatbot for customer support. Please share details and pricing."}'
 ```
 
 Then analyze it:
 ```powershell
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:5000/api/leads/1/analyze
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:7000/api/leads/1/analyze
 ```
 
 Duplicate email returns HTTP 409. Invalid input returns HTTP 400. If Ollama is down, the lead remains saved and the analysis endpoint returns HTTP 503.
